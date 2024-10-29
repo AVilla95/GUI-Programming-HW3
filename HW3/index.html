@@ -12,6 +12,13 @@ Description: ***
     <link rel="stylesheet" href="style.css">
   </head>
     <body>
+        <!--
+        <form>
+            <input type="number" id="test">
+            <button type="button" id="submitButton">Submit</button>
+        </form>
+        -->
+        <form>
         <h1>Form</h1>
         <p>
             Minimum column value:
@@ -39,28 +46,14 @@ Description: ***
 
         <br>
 
-        <button type="button" onclick="submitNumbers(min_col, max_col, min_row, max_row)">Submit</button>
+        <button id="submitButton">Submit</button>
 
         <table>
             
         </table>
 
-
+        </form>
 	</body>
-	<script src="script.js"></script>
-    <!--
-    <script>
-        function submitNumbers(min_col, max_col, min_row, max_row)
-        {
-            if (min_col || max_col || min_row || max_row != undefined)
-            {
-                document.write('Hi');
-            }
-            else
-            {
-                document.write('Oh no!');
-            }
-        }
-    </script>
-    -->
+    <script src="script.js"></script>
+        
 </html>
