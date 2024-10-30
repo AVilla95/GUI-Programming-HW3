@@ -4,11 +4,12 @@ Date: 10/30/2024
 Description: ***
 
 */
-table
+#myTable
 {
-    border-style:solid;
-    border-color:black;
+    text-align: center;
+    padding: 2%;
     margin-top: 2%;
+    width: 60%;
 }
 
 button

@@ -7,24 +7,44 @@ Description: ***
 
 document.getElementById("submitButton").addEventListener("click", function()
 {
+    event.preventDefault();
     var p1 = document.getElementById("min_col");
     var p2 = document.getElementById("max_col");
     var p3 = document.getElementById("min_row");
     var p4 = document.getElementById("max_row");
-    submitNumbers(parseInt(p1.value), parseInt(p2.value), parseInt(p3.value), parseInt(p4.value));
+    var finalArray = submitNumbers(parseInt(p1.value), parseInt(p2.value), parseInt(p3.value), parseInt(p4.value));
+    var finalTable = arrayToTable(finalArray);
+    document.getElementById("myTable").innerHTML = '';
+    document.getElementById("myTable").append(finalTable);
 });
 
-/*
-function submitNumbers(p5, p6, p7, p8)
-{
-    var result = p5 + p6 + p7 + p8;
-    console.log(result);
-    return result;
-}
-*/
 
 function submitNumbers(min_col, max_col, min_row, max_row)
 {
+    min_amount = -50;
+    max_amount = 50;
+
+    // Empty inputs
+    if(isNan(min_col) || isNan(max_col) || isNan(min_row) || isNan(max_row))
+    {
+        return null;
+    }
+    // Minimum size is greater than maximum
+    if(min_col > max_col || min_row > max_row)
+    {
+        return null;
+    }
+    // Check if they're numbers
+    if(!isInt(min_col) || !isInt(max_col) || !isInt(min_row) || !isInt(max_row))
+    {
+        return null;
+    }
+    // Minumum or Maximum values exceeded
+    if(min_col < min_amount || max_col > max_amount || min_row < min_amount || max_row > max_amount)
+    {
+        return null;
+    }
+
     // Array creation and variables
     let tableArray = [];
     tableArray[0] = [];
@@ -51,18 +71,34 @@ function submitNumbers(min_col, max_col, min_row, max_row)
         }
     }
 
-    console.log(tableArray);
+    //console.log(tableArray);
 
+    return tableArray;
 }
 
 
-/*
-let currentCol, currentRow;
-for(currentRow=1; currentRow < array_row_size; currentRow++)
+function arrayToTable(TwoDArray)
 {
-    for(currentCol=1; currentCol < array_col_size; currentCol++)
+    let table = document.createElement('table');
+
+    for(let row of TwoDArray)
     {
-        tableArray[currentCol, currentRow] = tableArray[currentCol, 0] * tableArray[0, currentRow];
+        let tableRow = table.insertRow();
+        for(let cell of row)
+        {
+            let tableCell = tableRow.insertCell();
+            tableCell.textContent = cell;
+        }
     }
+    return table;
 }
-*/
+
+function isInt(num)
+{
+    return Number.isInteger(num);
+}
+
+function isNan(num)
+{
+    return Number.isNaN(num);
+}
