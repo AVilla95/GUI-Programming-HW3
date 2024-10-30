@@ -2,7 +2,8 @@
 <!--
 Name: Armando Villa
 Date: 10/30/2024
-Description: ***
+Description: A website that works by taking in 4 inputs for the size 
+of a multiplication table. It then takes the inputs and generates the table.
 
 -->
 <html lang="en">
@@ -12,48 +13,43 @@ Description: ***
     <link rel="stylesheet" href="style.css">
   </head>
     <body>
-        <!--
+        <!-- Form -->
         <form>
-            <input type="number" id="test">
-            <button type="button" id="submitButton">Submit</button>
-        </form>
-        -->
-        <form>
-        <h1>Multiplication Table</h1>
-        <p>
-            Minimum column value:
-        </p>
-
-        <input type="number" id="min_col">
-
-        <p>
-            Maximum column value:
-        </p>
-        
-        <input type="number" id="max_col">
-
-        <p>
-            Minimum row value:
-        </p>
-        
-        <input type="number" id="min_row">
-
-        <p>
-            Maximum row value:
-        </p>
-
-        <input type="number" id="max_row">
-
-        <br><br>
-
-        <input type = "submit" id="submitButton" value="Submit">
-
-        <br>
-
-        <div id = "myTable">
+            <h1>Multiplication Table</h1>
+            <!-- User inputs for the table-->
+            <!-- Minimum Column -->
+            <p>
+                Minimum column value:
+            </p>
+            <input type="number" id="min_col">
             
-        </div>
+            <!-- Maximum Column -->
+            <p>
+                Maximum column value:
+            </p>
+            <input type="number" id="max_col">
+            
+            <!-- Minimum Row -->
+            <p>
+                Minimum row value:
+            </p>
+            <input type="number" id="min_row">
+            
+            <!-- Maximum Row -->
+            <p>
+                Maximum row value:
+            </p>
+            <input type="number" id="max_row">
 
+            <br><br>
+            
+            <!-- Submit Button -->
+            <input type = "submit" id = "submitButton" value = "Submit">
+
+            <br>
+
+            <!-- Where the table will be generated -->
+            <div id = "myTable"></div>
         </form>
 	</body>
     <script src="script.js"></script>

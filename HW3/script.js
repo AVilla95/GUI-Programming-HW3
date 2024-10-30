@@ -1,24 +1,35 @@
 /*
 Name: Armando Villa
 Date: 10/30/2024
-Description: ***
+Description: Javascript file that generates a multiplication table to be 
+used for the HTML file from user inputs.
 
 */
 
+// Event listener for the Submit Button
 document.getElementById("submitButton").addEventListener("click", function()
 {
+    // Depreciated event because the table kept disappearing otherwise
     event.preventDefault();
+
+    // Get the inputs from the user and generate an array from their values
     var p1 = document.getElementById("min_col");
     var p2 = document.getElementById("max_col");
     var p3 = document.getElementById("min_row");
     var p4 = document.getElementById("max_row");
+
+    // Stores the array generated from submitNumbers
     var finalArray = submitNumbers(parseInt(p1.value), parseInt(p2.value), parseInt(p3.value), parseInt(p4.value));
+    // Change the array into an HTML table
     var finalTable = arrayToTable(finalArray);
+    
+    // Implant the array into the HTML code
     document.getElementById("myTable").innerHTML = '';
     document.getElementById("myTable").append(finalTable);
 });
 
-
+// Function that takes the inputted numbers and creates a
+// 2d array with the correctly multiplicated values.
 function submitNumbers(min_col, max_col, min_row, max_row)
 {
     min_amount = -50;
@@ -53,6 +64,7 @@ function submitNumbers(min_col, max_col, min_row, max_row)
     var array_row_size = max_row - min_row + 1;
 
     // Creating the starter columns and rows
+    // Inserts the arrays inside the initial tableArray elements
     for(var i=0; i < array_col_size; i++)
     {
         tableArray[i+1] = [];
@@ -63,6 +75,8 @@ function submitNumbers(min_col, max_col, min_row, max_row)
         tableArray[0][i+1] = i + min_row;
     }
 
+    // Double for loop that fills in the array with the
+    // multiplication table values 
     for(var i=1; i <= array_col_size; i++)
     {
         for(var j=1; j <= array_row_size; j++)
@@ -76,7 +90,7 @@ function submitNumbers(min_col, max_col, min_row, max_row)
     return tableArray;
 }
 
-
+// Generates a table using the values from the array
 function arrayToTable(TwoDArray)
 {
     let table = document.createElement('table');
@@ -93,11 +107,13 @@ function arrayToTable(TwoDArray)
     return table;
 }
 
+// Checks if the value is an int
 function isInt(num)
 {
     return Number.isInteger(num);
 }
 
+// Checks if the value is a NaN
 function isNan(num)
 {
     return Number.isNaN(num);
